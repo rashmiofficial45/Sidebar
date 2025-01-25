@@ -1,13 +1,7 @@
 "use client"
-
+// import { useRouter } from 'next/navigation'
 import * as React from "react"
 import {
-  AudioWaveform,
-  Blocks,
-  Calendar,
-  Command,
-  Home,
-  Inbox,
   MessageCircleQuestion,
   Search,
   Settings2,
@@ -15,11 +9,11 @@ import {
   Trash2,
 } from "lucide-react"
 
-import { NavFavorites } from "@/components/nav-favorites"
+// import { NavFavorites } from "@/components/nav-favorites"
 import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
 import { NavWorkspaces } from "@/components/nav-workspaces"
-import { TeamSwitcher } from "@/components/team-switcher"
+import { NewPageChat } from "@/components/new-chat"
 import {
   Sidebar,
   SidebarContent,
@@ -29,23 +23,6 @@ import {
 
 // This is sample data.
 const data = {
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: Command,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
-  ],
   navMain: [
     {
       title: "Search",
@@ -57,34 +34,12 @@ const data = {
       url: "#",
       icon: Sparkles,
     },
-    {
-      title: "Home",
-      url: "#",
-      icon: Home,
-      isActive: true,
-    },
-    {
-      title: "Inbox",
-      url: "#",
-      icon: Inbox,
-      badge: "10",
-    },
   ],
   navSecondary: [
-    {
-      title: "Calendar",
-      url: "#",
-      icon: Calendar,
-    },
     {
       title: "Settings",
       url: "#",
       icon: Settings2,
-    },
-    {
-      title: "Templates",
-      url: "#",
-      icon: Blocks,
     },
     {
       title: "Trash",
@@ -259,14 +214,26 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  // const router = useRouter()
+
+  // const chats = useQuery(api.chats.list)
+  // const createChat = useMutation(api.chats.create)
+  // const deleteChat = useMutation(api.chats.delete)
+  // const updateChat = useMutation(api.chats.update)
+
+  // const handleClick = () => {
+  //   // e.preventDefault()
+
+  //   router.push("/dashboard/chat")
+  // }
   return (
     <Sidebar className="border-r-0" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <NewPageChat />
         <NavMain items={data.navMain} />
       </SidebarHeader>
       <SidebarContent>
-        <NavFavorites favorites={data.favorites} />
+        {/* <NavFavorites favorites={data.favorites} /> */}
         <NavWorkspaces workspaces={data.workspaces} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
